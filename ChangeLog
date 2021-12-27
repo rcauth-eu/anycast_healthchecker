@@ -1,6 +1,7 @@
 CHANGES
 =======
 
+* Cleanup RPM building
 * Update AUTHORS/ChangeLog
 * Use the network target on the Systemd unit file
 * Add docopt module to requirements.txt
