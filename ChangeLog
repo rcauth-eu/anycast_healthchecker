@@ -1,6 +1,8 @@
 CHANGES
 =======
 
+* Set RuntimeDirectory for the pid file
+* Add systemd unit and sysconfig files
 * Cleanup RPM building
 * Update AUTHORS/ChangeLog
 * Use the network target on the Systemd unit file

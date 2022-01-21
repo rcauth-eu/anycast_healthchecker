@@ -7,6 +7,7 @@ Documentation=https://github.com/unixsurfer/anycast_healthchecker/blob/master/RE
 [Service]
 Type=simple
 EnvironmentFile=/etc/sysconfig/anycast-healthchecker
+RuntimeDirectory=anycast-healthchecker
 TimeoutStartSec=0
 User=healthchecker
 Group=healthchecker
