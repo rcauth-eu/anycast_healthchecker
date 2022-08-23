@@ -93,7 +93,7 @@ class ServiceCheck(Thread):
 
         """
         cmd = shlex.split(self.config['check_cmd'])
-        self.log.info("running %s", ' '.join(cmd))
+        self.log.debug("running %s", ' '.join(cmd))
         proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                                 stderr=subprocess.PIPE)
 
@@ -114,7 +114,7 @@ class ServiceCheck(Thread):
         else:
             msg = "check duration {t:.3f}ms".format(
                 t=(time.time() - start_time) * 1000)
-            self.log.info(msg)
+            self.log.debug(msg)
 
             if proc.returncode != 0:
                 self.log.info("stderr from the check %s", errs)
@@ -304,7 +304,7 @@ class ServiceCheck(Thread):
             else:
                 if down_cnt == (self.config['check_fail'] - 1):
                     self.extra['status'] = 'down'
-                    self.log.info("status DOWN", extra=self.extra)
+                    self.log.warning("status DOWN", extra=self.extra)
                     # Service exceeded all consecutive checks.
                     # Set its state accordingly and put an item in queue.
                     # But do it only if previous state was different, to
@@ -325,7 +325,7 @@ class ServiceCheck(Thread):
                                    extra=self.extra)
                 up_cnt = 0
 
-            self.log.info("wall clock time %.3fms",
+            self.log.debug("wall clock time %.3fms",
                           (time.time() - timestamp) * 1000,
                           extra=self.extra)
 
